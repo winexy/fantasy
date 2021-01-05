@@ -19,6 +19,7 @@ List.from = function (xs) {
 };
 
 // And a conversion back for convenience!
+// toArray :: List a ~> a[]
 List.prototype.toArray = function () {
   return this.cata({
     Cons: (x, acc) => [x, ...acc.toArray()],
@@ -26,6 +27,7 @@ List.prototype.toArray = function () {
   });
 };
 
+// filter :: List a ~> (a -> bool) -> List a
 List.prototype.filter = function (predicate) {
   return this.cata({
     Cons: (head, tail) => {
@@ -37,6 +39,7 @@ List.prototype.filter = function (predicate) {
   });
 };
 
+// reduce :: List a ~> ((b, a) -> b) -> b -> b
 List.prototype.reduce = function (reducer, initial) {
   return this.cata({
     Cons: (head, tail) => {
@@ -48,6 +51,8 @@ List.prototype.reduce = function (reducer, initial) {
   });
 };
 
+// Setoid
+// equals :: Setoid a => List a ~> List a ~> bool
 List.prototype.equals = function (that) {
   return this.cata({
     // Note the two different Setoid uses:

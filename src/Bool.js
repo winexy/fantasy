@@ -5,6 +5,7 @@ const Bool = daggy.taggedSum('Bool', {
   False: []
 });
 
+// invert :: Bool ~> Bool
 Bool.prototype.invert = function () {
   return this.cata({
     True: () => Bool.False,
@@ -12,6 +13,8 @@ Bool.prototype.invert = function () {
   });
 };
 
+// Setoid
+// equals :: Bool ~> Bool ~> bool
 Bool.prototype.equals = function (that) {
   return this instanceof Bool.True === that instanceof Bool.True;
 };

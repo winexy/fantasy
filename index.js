@@ -23,6 +23,6 @@ const arr1 = [1, 2, 3];
 const arr2 = [1, 2, 3];
 const arr3 = [1, 2, 3];
 
-console.log(arr1.equals(arr1));
-console.log(arr1.equals(arr2) === arr2.equals(arr1));
-console.log(arr1.equals(arr2) && arr2.equals(arr3) && arr1.equals(arr3));
+console.log(arr1.equals(arr1)); // reflexivity
+console.log(arr1.equals(arr2) === arr2.equals(arr1)); // symmetry or commutativity 
+console.log(arr1.equals(arr2) && arr2.equals(arr3) && arr1.equals(arr3)); // transitivity
